@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "JevOut: Natural Context Can Flip Decision Models"
+authors:
+  - family-names: Xu
+    given-names: Zixiang
+version: 0.1.0
+repository-code: "https://github.com/xzx34/JevOut"
+license: Apache-2.0

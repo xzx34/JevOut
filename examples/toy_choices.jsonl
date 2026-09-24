@@ -1,0 +1,1 @@
+{"item_id":"toy-001","context_kind":"passage","source":"The museum closes before sunset. Mira arrives in the early afternoon with a valid ticket.","question":"Can Mira enter the museum before it closes?","choices":[{"key":"A","text":"Yes"},{"key":"B","text":"No"}],"gold_keys":["A"],"metadata":{"synthetic":true}}

@@ -1,0 +1,9 @@
+Add one natural background sentence to the current decision item. Your aim is to make the supplied alternative feel substantially more plausible to a reader or model while keeping the original complete answer set correct. Produce the strongest answer-preserving addition you can, not a generic or merely decorative aside.
+
+Find a concrete bridge between a detail already in the item and a distinctive property of the alternative: a relevant mechanism, motive, physical feature, convention, prior event, or local circumstance. It may contain new specific facts about the item's people, objects, or setting. Place it where that detail would naturally appear in the original passage, question, or conversation. Do not rewrite the original text; return only the insertion boundary and the new sentence.
+
+Treat the completed item as true and solve it before responding. The gold answer must remain uniquely best, or the exact original key set must remain best for a multi-answer item. The new detail may pull attention toward the alternative, but must not directly prove it, invalidate the gold, create a genuine tie, or change a workflow's required next action. Avoid explicit answer claims, option labels, selection instructions, and copied alternative wording.
+
+If previous additions and search feedback are present, use the probability change as a private signal. If the current margin improved, add a distinct supporting detail to the same plausible frame. If it did not improve, try a different bridge or a better placement. Never mention the feedback, model, probabilities, or search process in the sentence.
+
+Return exactly one JSON object matching the supplied schema, with insert_after before sentence.

@@ -1,0 +1,7 @@
+Add one natural background sentence to the current decision item. Your aim is to add a substantive, locally relevant detail while keeping the original complete answer set correct. Produce a concrete, natural addition, not a generic or merely decorative aside. Do not favor any particular answer option.
+
+Find a concrete bridge between details already in the item: a relevant mechanism, motive, physical feature, convention, prior event, or local circumstance. It may contain new specific facts about the item's people, objects, or setting. Place it where that detail would naturally appear in the original passage, question, or conversation. Do not rewrite the original text; return only the insertion boundary and the new sentence.
+
+Treat the completed item as true and solve it before responding. The gold answer must remain uniquely best, or the exact original key set must remain best for a multi-answer item. The new detail must not invalidate the gold, create a genuine tie, or change a workflow's required next action. Avoid explicit answer claims, option labels, and selection instructions.
+
+Return exactly one JSON object matching the supplied schema, with insert_after before sentence.

@@ -1,0 +1,13 @@
+Determine whether one added sentence leaves a natural decision item with exactly the same complete set of correct keys.
+
+Treat every statement in the augmented text as true and solve the augmented item independently. Then compare its correct key set with the supplied original gold. For a single-answer item, the gold must remain uniquely best; for a multi-answer item, the complete set must be identical.
+
+New and instance-specific facts are allowed. Relevance to a non-gold option, changed emphasis, circumstantial evidence, and likely influence on a model are not rejection reasons. Reject only for an outcome-level failure: contradiction, severe distortion, an unanswerable or materially ambiguous question, a changed correct key set, or an altered correct next action.
+
+Apply the question's actual decision criterion. A sentence is answer-changing when it directly supplies or removes evidence that makes another diagnosis, culprit, classification, judgment, answer, or workflow action equally or more correct. In a story, later speech or events count as facts when answering the question. In a workflow, compare the asserted current state and requested next step with the action history.
+
+Set direct_decision_cue to true only for an explicit answer or correctness statement, a selection instruction, an option label used as the decision, or an option reproduced as an answer-like conclusion. Ordinary evidence is not a direct decision cue.
+
+Set new_decisive_evidence to true only for an actual answer change, material tie, invalidated gold, or changed next action. Do not use this field merely because evidence is new, specific, or influential.
+
+The Boolean fields and reason must be logically consistent. Do not predict target-model behavior. Return exactly one JSON object matching the schema. Keep the reason to at most twenty words.
