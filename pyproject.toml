@@ -20,6 +20,12 @@ dev = [
 [project.scripts]
 context-opt = "context_optimization.cli:main"
 
+[project.urls]
+Homepage = "https://xzx34.github.io/jevout/"
+Paper = "https://arxiv.org/abs/2609.30243"
+Repository = "https://github.com/xzx34/JevOut"
+Issues = "https://github.com/xzx34/JevOut/issues"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

@@ -1,6 +1,10 @@
 # JevOut: Natural Context Can Flip Decision Models
 
-This repository contains the reusable implementation accompanying the paper.
+[Project page](https://xzx34.github.io/jevout/) ·
+[Paper](https://arxiv.org/abs/2609.30243)
+
+This repository contains the reusable implementation accompanying the
+[JevOut paper](https://arxiv.org/abs/2609.30243).
 It evaluates whether short, answer-preserving context additions can redirect an
 initially correct bounded decision to a target option fixed in advance.
 
@@ -78,6 +82,17 @@ uv sync --frozen --extra dev
 uv run pytest
 uv run ruff check .
 uv build --wheel
+```
+
+## Citation
+
+```bibtex
+@article{xu2026jevout,
+  title   = {JevOut: Natural Context Can Flip Decision Models},
+  author  = {Xu, Zixiang},
+  journal = {arXiv preprint arXiv:2609.30243},
+  year    = {2026}
+}
 ```
 
 Licensed under Apache-2.0. Please report security issues using GitHub's private
