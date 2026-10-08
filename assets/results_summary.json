@@ -1,0 +1,1333 @@
+{
+  "schema_version": 1,
+  "software_version": "0.2.0",
+  "paper": {
+    "title": "JevOut: Natural Context Can Flip Decision Models",
+    "arxiv": "2609.30243",
+    "manuscript": "October 2026 revision"
+  },
+  "rates": "Fractions in [0, 1]; TFR conditions on initially correct decisions within the specified accepted-call budget.",
+  "population": {
+    "datasets": 7,
+    "development_source_items": 350,
+    "held_out_source_items": 700,
+    "expanded_test_units_per_target": 1531,
+    "eligible_model_item_pairs": 1449
+  },
+  "headline": [
+    {
+      "target": "jev",
+      "dataset": "ALL",
+      "eligible": 508,
+      "targeted_flips": 312,
+      "tfr": 0.6141732283464567,
+      "wilson_ci95": [
+        0.5711358490507927,
+        0.6554968279255298
+      ],
+      "targeted_flips_p70": 229,
+      "targeted_flips_p90": 91,
+      "proposal_attempts": 26120,
+      "accepted_target_calls": 23114,
+      "input_tokens": 33393958,
+      "display_name": "Jev",
+      "neutral_one_shot": {
+        "eligible": 508,
+        "targeted_flips": 11,
+        "tfr": 0.021653543307086614,
+        "accepted": 494
+      },
+      "target_one_shot": {
+        "eligible": 508,
+        "targeted_flips": 86,
+        "tfr": 0.16929133858267717,
+        "accepted": 472
+      }
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "ALL",
+      "eligible": 328,
+      "targeted_flips": 238,
+      "tfr": 0.725609756097561,
+      "wilson_ci95": [
+        0.6749185109368676,
+        0.7710775997539598
+      ],
+      "targeted_flips_p70": 211,
+      "targeted_flips_p90": 132,
+      "proposal_attempts": 14477,
+      "accepted_target_calls": 12928,
+      "input_tokens": 20856174,
+      "display_name": "OpenSourceJev",
+      "neutral_one_shot": {
+        "eligible": 328,
+        "targeted_flips": 21,
+        "tfr": 0.06402439024390244,
+        "accepted": 316
+      },
+      "target_one_shot": {
+        "eligible": 328,
+        "targeted_flips": 53,
+        "tfr": 0.16158536585365854,
+        "accepted": 315
+      }
+    },
+    {
+      "target": "von",
+      "dataset": "ALL",
+      "eligible": 328,
+      "targeted_flips": 240,
+      "tfr": 0.7317073170731707,
+      "wilson_ci95": [
+        0.681278450251351,
+        0.7767716093770664
+      ],
+      "targeted_flips_p70": 177,
+      "targeted_flips_p90": 83,
+      "proposal_attempts": 15795,
+      "accepted_target_calls": 13494,
+      "input_tokens": 7846476,
+      "display_name": "Von",
+      "neutral_one_shot": {
+        "eligible": 328,
+        "targeted_flips": 25,
+        "tfr": 0.07621951219512195,
+        "accepted": 319
+      },
+      "target_one_shot": {
+        "eligible": 328,
+        "targeted_flips": 71,
+        "tfr": 0.21646341463414634,
+        "accepted": 307
+      }
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "ALL",
+      "eligible": 285,
+      "targeted_flips": 185,
+      "tfr": 0.6491228070175439,
+      "wilson_ci95": [
+        0.5920662404339383,
+        0.7022128438327215
+      ],
+      "targeted_flips_p70": 172,
+      "targeted_flips_p90": 132,
+      "proposal_attempts": 12520,
+      "accepted_target_calls": 11149,
+      "input_tokens": 12227111,
+      "display_name": "Plain Qwen",
+      "neutral_one_shot": {
+        "eligible": 285,
+        "targeted_flips": 24,
+        "tfr": 0.08421052631578947,
+        "accepted": 283
+      },
+      "target_one_shot": {
+        "eligible": 285,
+        "targeted_flips": 53,
+        "tfr": 0.18596491228070175,
+        "accepted": 272
+      }
+    }
+  ],
+  "primary_by_dataset": [
+    {
+      "target": "jev",
+      "dataset": "mmlu_pro",
+      "eligible": 83,
+      "targeted_flips": 38,
+      "tfr": 0.4578313253012048,
+      "wilson_ci95": [
+        0.35489376982070636,
+        0.5644995695466891
+      ],
+      "targeted_flips_p70": 26,
+      "targeted_flips_p90": 9,
+      "proposal_attempts": 4735,
+      "accepted_target_calls": 4171,
+      "input_tokens": 2537719
+    },
+    {
+      "target": "jev",
+      "dataset": "supergpqa",
+      "eligible": 46,
+      "targeted_flips": 31,
+      "tfr": 0.6739130434782609,
+      "wilson_ci95": [
+        0.5296773241932241,
+        0.7913405669074435
+      ],
+      "targeted_flips_p70": 16,
+      "targeted_flips_p90": 3,
+      "proposal_attempts": 2584,
+      "accepted_target_calls": 2278,
+      "input_tokens": 1553328
+    },
+    {
+      "target": "jev",
+      "dataset": "musr",
+      "eligible": 61,
+      "targeted_flips": 38,
+      "tfr": 0.6229508196721312,
+      "wilson_ci95": [
+        0.49747857841819165,
+        0.7338548966888299
+      ],
+      "targeted_flips_p70": 26,
+      "targeted_flips_p90": 8,
+      "proposal_attempts": 3284,
+      "accepted_target_calls": 2874,
+      "input_tokens": 3829968
+    },
+    {
+      "target": "jev",
+      "dataset": "tombench",
+      "eligible": 72,
+      "targeted_flips": 55,
+      "tfr": 0.7638888888888888,
+      "wilson_ci95": [
+        0.6540123102714637,
+        0.8470329041915168
+      ],
+      "targeted_flips_p70": 46,
+      "targeted_flips_p90": 21,
+      "proposal_attempts": 3234,
+      "accepted_target_calls": 2895,
+      "input_tokens": 1446305
+    },
+    {
+      "target": "jev",
+      "dataset": "lar_echr",
+      "eligible": 80,
+      "targeted_flips": 32,
+      "tfr": 0.4,
+      "wilson_ci95": [
+        0.2996182759587093,
+        0.509545349948396
+      ],
+      "targeted_flips_p70": 17,
+      "targeted_flips_p90": 0,
+      "proposal_attempts": 5008,
+      "accepted_target_calls": 4432,
+      "input_tokens": 7056782
+    },
+    {
+      "target": "jev",
+      "dataset": "sata",
+      "eligible": 96,
+      "targeted_flips": 58,
+      "tfr": 0.6041666666666666,
+      "wilson_ci95": [
+        0.5041511204834945,
+        0.6961664653794899
+      ],
+      "targeted_flips_p70": 47,
+      "targeted_flips_p90": 12,
+      "proposal_attempts": 4818,
+      "accepted_target_calls": 4287,
+      "input_tokens": 3685207
+    },
+    {
+      "target": "jev",
+      "dataset": "bfcl_v4",
+      "eligible": 70,
+      "targeted_flips": 60,
+      "tfr": 0.8571428571428571,
+      "wilson_ci95": [
+        0.7566158011633325,
+        0.920510582829334
+      ],
+      "targeted_flips_p70": 51,
+      "targeted_flips_p90": 38,
+      "proposal_attempts": 2457,
+      "accepted_target_calls": 2177,
+      "input_tokens": 13284649
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "mmlu_pro",
+      "eligible": 33,
+      "targeted_flips": 23,
+      "tfr": 0.696969696969697,
+      "wilson_ci95": [
+        0.5266186485419944,
+        0.8262446857594641
+      ],
+      "targeted_flips_p70": 23,
+      "targeted_flips_p90": 17,
+      "proposal_attempts": 1378,
+      "accepted_target_calls": 1282,
+      "input_tokens": 330855
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "supergpqa",
+      "eligible": 12,
+      "targeted_flips": 9,
+      "tfr": 0.75,
+      "wilson_ci95": [
+        0.46769466506643426,
+        0.9110583316059453
+      ],
+      "targeted_flips_p70": 8,
+      "targeted_flips_p90": 6,
+      "proposal_attempts": 462,
+      "accepted_target_calls": 446,
+      "input_tokens": 137157
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "musr",
+      "eligible": 36,
+      "targeted_flips": 22,
+      "tfr": 0.6111111111111112,
+      "wilson_ci95": [
+        0.44864459096605147,
+        0.75215126934629
+      ],
+      "targeted_flips_p70": 22,
+      "targeted_flips_p90": 16,
+      "proposal_attempts": 1553,
+      "accepted_target_calls": 1333,
+      "input_tokens": 1382558
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "tombench",
+      "eligible": 37,
+      "targeted_flips": 28,
+      "tfr": 0.7567567567567568,
+      "wilson_ci95": [
+        0.5988270787855735,
+        0.8663864701088361
+      ],
+      "targeted_flips_p70": 27,
+      "targeted_flips_p90": 26,
+      "proposal_attempts": 1426,
+      "accepted_target_calls": 1344,
+      "input_tokens": 283734
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "lar_echr",
+      "eligible": 46,
+      "targeted_flips": 18,
+      "tfr": 0.391304347826087,
+      "wilson_ci95": [
+        0.26393225037829016,
+        0.5354315676837925
+      ],
+      "targeted_flips_p70": 18,
+      "targeted_flips_p90": 7,
+      "proposal_attempts": 2611,
+      "accepted_target_calls": 2292,
+      "input_tokens": 2996286
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "sata",
+      "eligible": 88,
+      "targeted_flips": 71,
+      "tfr": 0.8068181818181818,
+      "wilson_ci95": [
+        0.7122293318676104,
+        0.8757404226789328
+      ],
+      "targeted_flips_p70": 47,
+      "targeted_flips_p90": 0,
+      "proposal_attempts": 4176,
+      "accepted_target_calls": 3744,
+      "input_tokens": 2394986
+    },
+    {
+      "target": "open_source_jev",
+      "dataset": "bfcl_v4",
+      "eligible": 76,
+      "targeted_flips": 67,
+      "tfr": 0.881578947368421,
+      "wilson_ci95": [
+        0.7900078224920806,
+        0.9364318099582094
+      ],
+      "targeted_flips_p70": 66,
+      "targeted_flips_p90": 60,
+      "proposal_attempts": 2871,
+      "accepted_target_calls": 2487,
+      "input_tokens": 13330598
+    },
+    {
+      "target": "von",
+      "dataset": "mmlu_pro",
+      "eligible": 18,
+      "targeted_flips": 16,
+      "tfr": 0.8888888888888888,
+      "wilson_ci95": [
+        0.672002348698212,
+        0.9689804773543876
+      ],
+      "targeted_flips_p70": 13,
+      "targeted_flips_p90": 5,
+      "proposal_attempts": 639,
+      "accepted_target_calls": 599,
+      "input_tokens": 86893
+    },
+    {
+      "target": "von",
+      "dataset": "supergpqa",
+      "eligible": 16,
+      "targeted_flips": 16,
+      "tfr": 1.0,
+      "wilson_ci95": [
+        0.8063923194655637,
+        1.0000000000000002
+      ],
+      "targeted_flips_p70": 8,
+      "targeted_flips_p90": 5,
+      "proposal_attempts": 792,
+      "accepted_target_calls": 738,
+      "input_tokens": 82701
+    },
+    {
+      "target": "von",
+      "dataset": "musr",
+      "eligible": 60,
+      "targeted_flips": 33,
+      "tfr": 0.55,
+      "wilson_ci95": [
+        0.4249193588533434,
+        0.6690634559324476
+      ],
+      "targeted_flips_p70": 22,
+      "targeted_flips_p90": 11,
+      "proposal_attempts": 3482,
+      "accepted_target_calls": 2701,
+      "input_tokens": 3040667
+    },
+    {
+      "target": "von",
+      "dataset": "tombench",
+      "eligible": 41,
+      "targeted_flips": 32,
+      "tfr": 0.7804878048780488,
+      "wilson_ci95": [
+        0.6329499401177383,
+        0.8799682522178243
+      ],
+      "targeted_flips_p70": 26,
+      "targeted_flips_p90": 13,
+      "proposal_attempts": 1679,
+      "accepted_target_calls": 1467,
+      "input_tokens": 246127
+    },
+    {
+      "target": "von",
+      "dataset": "lar_echr",
+      "eligible": 47,
+      "targeted_flips": 29,
+      "tfr": 0.6170212765957447,
+      "wilson_ci95": [
+        0.47426566956413574,
+        0.7420931890357799
+      ],
+      "targeted_flips_p70": 24,
+      "targeted_flips_p90": 11,
+      "proposal_attempts": 2370,
+      "accepted_target_calls": 2150,
+      "input_tokens": 1903209
+    },
+    {
+      "target": "von",
+      "dataset": "sata",
+      "eligible": 89,
+      "targeted_flips": 68,
+      "tfr": 0.7640449438202247,
+      "wilson_ci95": [
+        0.6660637395237937,
+        0.840175612991893
+      ],
+      "targeted_flips_p70": 61,
+      "targeted_flips_p90": 36,
+      "proposal_attempts": 3675,
+      "accepted_target_calls": 3104,
+      "input_tokens": 2125447
+    },
+    {
+      "target": "von",
+      "dataset": "bfcl_v4",
+      "eligible": 57,
+      "targeted_flips": 46,
+      "tfr": 0.8070175438596491,
+      "wilson_ci95": [
+        0.6865930975223603,
+        0.8886725301994945
+      ],
+      "targeted_flips_p70": 23,
+      "targeted_flips_p90": 2,
+      "proposal_attempts": 3158,
+      "accepted_target_calls": 2735,
+      "input_tokens": 361432
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "mmlu_pro",
+      "eligible": 28,
+      "targeted_flips": 16,
+      "tfr": 0.5714285714285714,
+      "wilson_ci95": [
+        0.3907078562746876,
+        0.734914528758763
+      ],
+      "targeted_flips_p70": 14,
+      "targeted_flips_p90": 13,
+      "proposal_attempts": 1254,
+      "accepted_target_calls": 1176,
+      "input_tokens": 306823
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "supergpqa",
+      "eligible": 16,
+      "targeted_flips": 9,
+      "tfr": 0.5625,
+      "wilson_ci95": [
+        0.331785563988119,
+        0.7690134759450765
+      ],
+      "targeted_flips_p70": 8,
+      "targeted_flips_p90": 8,
+      "proposal_attempts": 715,
+      "accepted_target_calls": 681,
+      "input_tokens": 198714
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "musr",
+      "eligible": 46,
+      "targeted_flips": 30,
+      "tfr": 0.6521739130434783,
+      "wilson_ci95": [
+        0.5077005884206276,
+        0.7731900662924567
+      ],
+      "targeted_flips_p70": 27,
+      "targeted_flips_p90": 17,
+      "proposal_attempts": 2284,
+      "accepted_target_calls": 1775,
+      "input_tokens": 1859660
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "tombench",
+      "eligible": 40,
+      "targeted_flips": 24,
+      "tfr": 0.6,
+      "wilson_ci95": [
+        0.44595893660346186,
+        0.7365167431570808
+      ],
+      "targeted_flips_p70": 23,
+      "targeted_flips_p90": 21,
+      "proposal_attempts": 1757,
+      "accepted_target_calls": 1670,
+      "input_tokens": 342506
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "lar_echr",
+      "eligible": 51,
+      "targeted_flips": 22,
+      "tfr": 0.43137254901960786,
+      "wilson_ci95": [
+        0.3050123610790954,
+        0.5673469789069776
+      ],
+      "targeted_flips_p70": 18,
+      "targeted_flips_p90": 14,
+      "proposal_attempts": 2793,
+      "accepted_target_calls": 2570,
+      "input_tokens": 3245234
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "sata",
+      "eligible": 82,
+      "targeted_flips": 73,
+      "tfr": 0.8902439024390244,
+      "wilson_ci95": [
+        0.804387633588628,
+        0.9411728552386109
+      ],
+      "targeted_flips_p70": 71,
+      "targeted_flips_p90": 49,
+      "proposal_attempts": 2539,
+      "accepted_target_calls": 2252,
+      "input_tokens": 1485557
+    },
+    {
+      "target": "plain_qwen",
+      "dataset": "bfcl_v4",
+      "eligible": 22,
+      "targeted_flips": 11,
+      "tfr": 0.5,
+      "wilson_ci95": [
+        0.3072210627372502,
+        0.6927789372627497
+      ],
+      "targeted_flips_p70": 11,
+      "targeted_flips_p90": 10,
+      "proposal_attempts": 1178,
+      "accepted_target_calls": 1025,
+      "input_tokens": 4788617
+    }
+  ],
+  "primary_budget_curves": [
+    {
+      "target": "jev",
+      "accepted_call_budget": 16,
+      "eligible": 508,
+      "targeted_flips": 205,
+      "tfr": 0.4035433070866142
+    },
+    {
+      "target": "jev",
+      "accepted_call_budget": 32,
+      "eligible": 508,
+      "targeted_flips": 261,
+      "tfr": 0.5137795275590551
+    },
+    {
+      "target": "jev",
+      "accepted_call_budget": 48,
+      "eligible": 508,
+      "targeted_flips": 291,
+      "tfr": 0.5728346456692913
+    },
+    {
+      "target": "jev",
+      "accepted_call_budget": 64,
+      "eligible": 508,
+      "targeted_flips": 312,
+      "tfr": 0.6141732283464567
+    },
+    {
+      "target": "open_source_jev",
+      "accepted_call_budget": 16,
+      "eligible": 328,
+      "targeted_flips": 167,
+      "tfr": 0.5091463414634146
+    },
+    {
+      "target": "open_source_jev",
+      "accepted_call_budget": 32,
+      "eligible": 328,
+      "targeted_flips": 200,
+      "tfr": 0.6097560975609756
+    },
+    {
+      "target": "open_source_jev",
+      "accepted_call_budget": 48,
+      "eligible": 328,
+      "targeted_flips": 224,
+      "tfr": 0.6829268292682927
+    },
+    {
+      "target": "open_source_jev",
+      "accepted_call_budget": 64,
+      "eligible": 328,
+      "targeted_flips": 238,
+      "tfr": 0.725609756097561
+    },
+    {
+      "target": "von",
+      "accepted_call_budget": 16,
+      "eligible": 328,
+      "targeted_flips": 172,
+      "tfr": 0.524390243902439
+    },
+    {
+      "target": "von",
+      "accepted_call_budget": 32,
+      "eligible": 328,
+      "targeted_flips": 213,
+      "tfr": 0.649390243902439
+    },
+    {
+      "target": "von",
+      "accepted_call_budget": 48,
+      "eligible": 328,
+      "targeted_flips": 232,
+      "tfr": 0.7073170731707317
+    },
+    {
+      "target": "von",
+      "accepted_call_budget": 64,
+      "eligible": 328,
+      "targeted_flips": 240,
+      "tfr": 0.7317073170731707
+    },
+    {
+      "target": "plain_qwen",
+      "accepted_call_budget": 16,
+      "eligible": 285,
+      "targeted_flips": 121,
+      "tfr": 0.4245614035087719
+    },
+    {
+      "target": "plain_qwen",
+      "accepted_call_budget": 32,
+      "eligible": 285,
+      "targeted_flips": 159,
+      "tfr": 0.5578947368421052
+    },
+    {
+      "target": "plain_qwen",
+      "accepted_call_budget": 48,
+      "eligible": 285,
+      "targeted_flips": 173,
+      "tfr": 0.6070175438596491
+    },
+    {
+      "target": "plain_qwen",
+      "accepted_call_budget": 64,
+      "eligible": 285,
+      "targeted_flips": 185,
+      "tfr": 0.6491228070175439
+    }
+  ],
+  "primary_accounting": {
+    "input_tokens": 74323719,
+    "n_clean_correct": 1449,
+    "p70_shifts": 789,
+    "p90_shifts": 438,
+    "proposal_calls": 68912,
+    "target_calls": 60685,
+    "target_shifts": 975
+  },
+  "one_shot_accounting": {
+    "evaluated": 2778,
+    "generated": 2898
+  },
+  "feedback": [
+    {
+      "condition": "feedback_full",
+      "accepted_call_budget": 16,
+      "eligible": 140,
+      "targeted_flips": 53,
+      "tfr": 0.37857142857142856
+    },
+    {
+      "condition": "feedback_full",
+      "accepted_call_budget": 32,
+      "eligible": 140,
+      "targeted_flips": 71,
+      "tfr": 0.5071428571428571
+    },
+    {
+      "condition": "feedback_full",
+      "accepted_call_budget": 48,
+      "eligible": 140,
+      "targeted_flips": 80,
+      "tfr": 0.5714285714285714
+    },
+    {
+      "condition": "feedback_full",
+      "accepted_call_budget": 64,
+      "eligible": 140,
+      "targeted_flips": 86,
+      "tfr": 0.6142857142857143
+    },
+    {
+      "condition": "feedback_probability_only",
+      "accepted_call_budget": 16,
+      "eligible": 140,
+      "targeted_flips": 54,
+      "tfr": 0.38571428571428573
+    },
+    {
+      "condition": "feedback_probability_only",
+      "accepted_call_budget": 32,
+      "eligible": 140,
+      "targeted_flips": 70,
+      "tfr": 0.5
+    },
+    {
+      "condition": "feedback_probability_only",
+      "accepted_call_budget": 48,
+      "eligible": 140,
+      "targeted_flips": 78,
+      "tfr": 0.5571428571428572
+    },
+    {
+      "condition": "feedback_probability_only",
+      "accepted_call_budget": 64,
+      "eligible": 140,
+      "targeted_flips": 89,
+      "tfr": 0.6357142857142857
+    },
+    {
+      "condition": "feedback_label_only",
+      "accepted_call_budget": 16,
+      "eligible": 140,
+      "targeted_flips": 53,
+      "tfr": 0.37857142857142856
+    },
+    {
+      "condition": "feedback_label_only",
+      "accepted_call_budget": 32,
+      "eligible": 140,
+      "targeted_flips": 67,
+      "tfr": 0.4785714285714286
+    },
+    {
+      "condition": "feedback_label_only",
+      "accepted_call_budget": 48,
+      "eligible": 140,
+      "targeted_flips": 73,
+      "tfr": 0.5214285714285715
+    },
+    {
+      "condition": "feedback_label_only",
+      "accepted_call_budget": 64,
+      "eligible": 140,
+      "targeted_flips": 79,
+      "tfr": 0.5642857142857143
+    }
+  ],
+  "transfer": [
+    {
+      "source": "jev",
+      "destination": "jev",
+      "matched_initially_correct": 508,
+      "targeted_transfers": 312,
+      "targeted_transfer_rate": 0.6141732283464567
+    },
+    {
+      "source": "jev",
+      "destination": "open_source_jev",
+      "matched_initially_correct": 240,
+      "targeted_transfers": 75,
+      "targeted_transfer_rate": 0.3125
+    },
+    {
+      "source": "jev",
+      "destination": "plain_qwen",
+      "matched_initially_correct": 219,
+      "targeted_transfers": 57,
+      "targeted_transfer_rate": 0.2602739726027397
+    },
+    {
+      "source": "jev",
+      "destination": "von",
+      "matched_initially_correct": 256,
+      "targeted_transfers": 65,
+      "targeted_transfer_rate": 0.25390625
+    },
+    {
+      "source": "open_source_jev",
+      "destination": "jev",
+      "matched_initially_correct": 274,
+      "targeted_transfers": 69,
+      "targeted_transfer_rate": 0.2518248175182482
+    },
+    {
+      "source": "open_source_jev",
+      "destination": "open_source_jev",
+      "matched_initially_correct": 328,
+      "targeted_transfers": 238,
+      "targeted_transfer_rate": 0.725609756097561
+    },
+    {
+      "source": "open_source_jev",
+      "destination": "plain_qwen",
+      "matched_initially_correct": 224,
+      "targeted_transfers": 99,
+      "targeted_transfer_rate": 0.4419642857142857
+    },
+    {
+      "source": "open_source_jev",
+      "destination": "von",
+      "matched_initially_correct": 202,
+      "targeted_transfers": 58,
+      "targeted_transfer_rate": 0.2871287128712871
+    },
+    {
+      "source": "plain_qwen",
+      "destination": "jev",
+      "matched_initially_correct": 239,
+      "targeted_transfers": 58,
+      "targeted_transfer_rate": 0.24267782426778242
+    },
+    {
+      "source": "plain_qwen",
+      "destination": "open_source_jev",
+      "matched_initially_correct": 207,
+      "targeted_transfers": 99,
+      "targeted_transfer_rate": 0.4782608695652174
+    },
+    {
+      "source": "plain_qwen",
+      "destination": "plain_qwen",
+      "matched_initially_correct": 285,
+      "targeted_transfers": 185,
+      "targeted_transfer_rate": 0.6491228070175439
+    },
+    {
+      "source": "plain_qwen",
+      "destination": "von",
+      "matched_initially_correct": 179,
+      "targeted_transfers": 45,
+      "targeted_transfer_rate": 0.25139664804469275
+    },
+    {
+      "source": "von",
+      "destination": "jev",
+      "matched_initially_correct": 260,
+      "targeted_transfers": 63,
+      "targeted_transfer_rate": 0.2423076923076923
+    },
+    {
+      "source": "von",
+      "destination": "open_source_jev",
+      "matched_initially_correct": 186,
+      "targeted_transfers": 55,
+      "targeted_transfer_rate": 0.2956989247311828
+    },
+    {
+      "source": "von",
+      "destination": "plain_qwen",
+      "matched_initially_correct": 171,
+      "targeted_transfers": 36,
+      "targeted_transfer_rate": 0.21052631578947367
+    },
+    {
+      "source": "von",
+      "destination": "von",
+      "matched_initially_correct": 328,
+      "targeted_transfers": 240,
+      "targeted_transfer_rate": 0.7317073170731707
+    }
+  ],
+  "transfer_accounting": {
+    "off_diagonal_evaluations": 2657,
+    "records": 4106,
+    "reused_diagonal": 1449
+  },
+  "independent_root_jev": {
+    "datasets": [
+      {
+        "dataset": "mmlu_pro",
+        "n": 83,
+        "paired": {
+          "both": 26,
+          "primary_only": 12,
+          "baseline_only": 0,
+          "neither": 45
+        },
+        "primary": 38,
+        "baseline": 26,
+        "primary_p70": 26,
+        "baseline_p70": 16
+      },
+      {
+        "dataset": "supergpqa",
+        "n": 46,
+        "paired": {
+          "both": 22,
+          "primary_only": 9,
+          "baseline_only": 3,
+          "neither": 12
+        },
+        "primary": 31,
+        "baseline": 25,
+        "primary_p70": 16,
+        "baseline_p70": 13
+      },
+      {
+        "dataset": "musr",
+        "n": 61,
+        "paired": {
+          "both": 30,
+          "primary_only": 8,
+          "baseline_only": 2,
+          "neither": 21
+        },
+        "primary": 38,
+        "baseline": 32,
+        "primary_p70": 26,
+        "baseline_p70": 20
+      },
+      {
+        "dataset": "tombench",
+        "n": 72,
+        "paired": {
+          "both": 39,
+          "primary_only": 16,
+          "baseline_only": 0,
+          "neither": 17
+        },
+        "primary": 55,
+        "baseline": 39,
+        "primary_p70": 46,
+        "baseline_p70": 31
+      },
+      {
+        "dataset": "lar_echr",
+        "n": 80,
+        "paired": {
+          "both": 27,
+          "primary_only": 5,
+          "baseline_only": 2,
+          "neither": 46
+        },
+        "primary": 32,
+        "baseline": 29,
+        "primary_p70": 17,
+        "baseline_p70": 10
+      },
+      {
+        "dataset": "sata",
+        "n": 96,
+        "paired": {
+          "both": 48,
+          "primary_only": 10,
+          "baseline_only": 0,
+          "neither": 38
+        },
+        "primary": 58,
+        "baseline": 48,
+        "primary_p70": 47,
+        "baseline_p70": 37
+      },
+      {
+        "dataset": "bfcl_v4",
+        "n": 70,
+        "paired": {
+          "both": 45,
+          "primary_only": 15,
+          "baseline_only": 0,
+          "neither": 10
+        },
+        "primary": 60,
+        "baseline": 45,
+        "primary_p70": 51,
+        "baseline_p70": 44
+      },
+      {
+        "dataset": "ALL",
+        "n": 508,
+        "paired": {
+          "both": 237,
+          "primary_only": 75,
+          "baseline_only": 7,
+          "neither": 189
+        },
+        "primary": 312,
+        "baseline": 244,
+        "primary_p70": 229,
+        "baseline_p70": 171
+      }
+    ],
+    "budget_prefixes": [
+      {
+        "budget": 1,
+        "n": 508,
+        "primary": 102,
+        "baseline": 106,
+        "primary_p70": 57,
+        "baseline_p70": 60
+      },
+      {
+        "budget": 4,
+        "n": 508,
+        "primary": 153,
+        "baseline": 155,
+        "primary_p70": 97,
+        "baseline_p70": 92
+      },
+      {
+        "budget": 8,
+        "n": 508,
+        "primary": 182,
+        "baseline": 181,
+        "primary_p70": 112,
+        "baseline_p70": 106
+      },
+      {
+        "budget": 16,
+        "n": 508,
+        "primary": 205,
+        "baseline": 201,
+        "primary_p70": 129,
+        "baseline_p70": 130
+      },
+      {
+        "budget": 32,
+        "n": 508,
+        "primary": 261,
+        "baseline": 225,
+        "primary_p70": 185,
+        "baseline_p70": 151
+      },
+      {
+        "budget": 48,
+        "n": 508,
+        "primary": 291,
+        "baseline": 237,
+        "primary_p70": 217,
+        "baseline_p70": 163
+      },
+      {
+        "budget": 64,
+        "n": 508,
+        "primary": 312,
+        "baseline": 244,
+        "primary_p70": 229,
+        "baseline_p70": 171
+      }
+    ],
+    "accounting": {
+      "proposals": 27143,
+      "target_calls": 24860,
+      "stop_reasons": {
+        "target_call_cap": 328,
+        "batch_end_threshold": 171,
+        "proposal_attempt_cap": 9
+      },
+      "first_64_slots_flips": 244
+    }
+  },
+  "repeatability": {
+    "primary_jev_sample": {
+      "n": 100,
+      "contexts": 108,
+      "calls": 2080,
+      "transport_errors": 0,
+      "first_6": 98,
+      "any_6": 99,
+      "joint_6": 99,
+      "first_8": 97,
+      "any_8": 97,
+      "joint_8": 94,
+      "first_10": 93,
+      "any_10": 94,
+      "joint_10": 91,
+      "sampling": "100 successful cases proportionally sampled across seven datasets; context preselected by discovery target probability."
+    },
+    "independent_root_snapshot_sample": {
+      "n": 101,
+      "contexts": 114,
+      "calls": 2150,
+      "transport_errors": 0,
+      "first_6": 98,
+      "any_6": 99,
+      "joint_6": 97,
+      "first_8": 95,
+      "any_8": 96,
+      "joint_8": 94,
+      "first_10": 92,
+      "any_10": 93,
+      "joint_10": 87,
+      "sampling": "101 successes from an intermediate 241-case baseline snapshot; separate from the primary sample."
+    },
+    "count_definitions": {
+      "first_8": "First preselected context reaches at least 8/10 target hits.",
+      "any_8": "An archived context reaches at least 8/10 under the recorded fallback rule.",
+      "joint_8": "Original input retains gold at least 8/10 and an archived context reaches at least 8/10 target hits."
+    }
+  },
+  "human_validation": {
+    "protocol": {
+      "sampling_unit": "augmented context",
+      "successful_sampling": "random, stratified across datasets, balanced across target systems, deduplicated",
+      "deduplicated": true,
+      "model_specific_validity_counts_available": false,
+      "annotators": 3,
+      "blinded_fields": [
+        "target designation",
+        "model prediction",
+        "flip outcome"
+      ],
+      "criteria": [
+        "naturalness",
+        "gold preservation",
+        "absence of decisive answer-changing evidence"
+      ],
+      "aggregation": "a majority of annotators judge the context natural, gold-preserving, and non-decisive"
+    },
+    "groups": [
+      {
+        "name": "Successful",
+        "sampled": 250,
+        "human_valid": 229
+      },
+      {
+        "name": "Accepted but unsuccessful",
+        "sampled": 100,
+        "human_valid": 93
+      }
+    ],
+    "reported_fleiss_kappa": {
+      "naturalness": 0.72,
+      "gold_preservation": 0.79,
+      "decisive_evidence": 0.75
+    }
+  },
+  "learned_proposer_full_context": {
+    "base": {
+      "best_of_4": 148,
+      "evaluated": 1882,
+      "generated": 2032,
+      "n": 508,
+      "one_shot": 82,
+      "p70": 91
+    },
+    "v1": {
+      "best_of_4": 167,
+      "evaluated": 1875,
+      "generated": 2032,
+      "n": 508,
+      "one_shot": 95,
+      "p70": 112
+    },
+    "v2": {
+      "best_of_4": 174,
+      "evaluated": 1808,
+      "generated": 2032,
+      "n": 508,
+      "one_shot": 111,
+      "p70": 108
+    }
+  },
+  "protocol": {
+    "generator": {
+      "model": "gemma4-12b",
+      "prompt": "generator_answer_preserving_v3",
+      "prompt_hash": "eab0537c09834c28f94e877a3587f4cce50600e7ff39739680c094b52eb55ab4",
+      "schema_hash": "148b965f95ddb5519ca336c1e8eeef95c27bc0ececf9c3207f30e00101c67035",
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_tokens": 160,
+      "proposal_cache_revision": 2
+    },
+    "checker": {
+      "prompt": "checker_answer_preserving_v2",
+      "prompt_hash": "05d68ff173854b40320e64b24e08507806655ea4e2c280c1be21eca4a89837fb",
+      "schema_hash": "5227ccf369adff90d01767681d2f7a3d5c470704ed03f0b640a5d7567141fcd4",
+      "temperature": 0.0,
+      "max_tokens": 160,
+      "checker_cache_revision": 2
+    },
+    "optimization": {
+      "particles": 16,
+      "rounds": 4,
+      "temperature": 1.0,
+      "exploration": 0.1,
+      "resampler": "archive_restart_v2",
+      "restart_fraction": 0.25,
+      "success_threshold": 0.7,
+      "proposal_retries": 1,
+      "seed": 20260921
+    },
+    "independent_root": {
+      "accepted_target_call_cap": 64,
+      "proposal_attempt_cap": 128,
+      "batch_slots": 16,
+      "stop_target_probability": 0.7
+    },
+    "models": {
+      "gemma_proposer": {
+        "model": "google/gemma-4-12B-it",
+        "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+        "license": "gemma",
+        "precision": "checkpoint-native",
+        "role": "generator-and-semantic-checker"
+      },
+      "jev": {
+        "model": "jev-1.13.0",
+        "provider": "TypeSafe",
+        "license": "hosted-service"
+      },
+      "open_source_jev": {
+        "implementation": "https://github.com/sabeel111/OpenSourceJev",
+        "implementation_revision": "3c41fba3681d3b6f00b0005eee67cc6eafbad75b",
+        "model": "Qwen/Qwen3-1.7B-GGUF",
+        "model_revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+        "implementation_license": "mit",
+        "model_license": "apache-2.0",
+        "artifact": "Qwen3-1.7B-Q8_0.gguf",
+        "artifact_bytes": 1834426016,
+        "artifact_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+        "calibration": "noul-temperature-9.470457368922842"
+      },
+      "plain_qwen": {
+        "model": "Qwen/Qwen3-1.7B-GGUF",
+        "model_revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+        "model_license": "apache-2.0",
+        "artifact": "Qwen3-1.7B-Q8_0.gguf",
+        "artifact_bytes": 1834426016,
+        "artifact_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+        "scoring": "standard-numbered-choice-conditional-likelihood"
+      },
+      "von": {
+        "implementation": "https://github.com/wfzyx/von",
+        "implementation_revision": "2656a69be2ef0ebf2f3058302e52791f99cbd8de",
+        "model": "wfzyx/von-1.0",
+        "model_revision": "aa2fdc9630ecdadef32c56073553b3a69bed38bf",
+        "license": "apache-2.0"
+      }
+    },
+    "dataset_sources": {
+      "bfcl_v4": {
+        "repo": "https://github.com/EnlightenedAI/BFCL",
+        "revision": "6ea57973c7a6097fd7c5915698c54c17c5b1b6c8",
+        "license": "apache-2.0"
+      },
+      "lar_echr": {
+        "repo": "AUEB-NLP/lar-echr",
+        "revision": "3204a623238a3a589a595de58e1e78b7e11cde6b",
+        "license": "cc-by-nc-sa-4.0"
+      },
+      "mmlu_pro": {
+        "repo": "TIGER-Lab/MMLU-Pro",
+        "revision": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+        "license": "mit"
+      },
+      "musr": {
+        "repo": "TAUR-Lab/MuSR",
+        "revision": "7c365b439a222150f317764d4f16ae6c96d7d94a",
+        "license": "cc-by-4.0"
+      },
+      "sata": {
+        "repo": "sata-bench/sata-bench",
+        "revision": "ba43a7ab537adfa3498e3a160a6d1eafbefc95c1",
+        "license": "cc-by-nc-4.0"
+      },
+      "supergpqa": {
+        "repo": "m-a-p/SuperGPQA",
+        "revision": "4430d4458112c7d4497fdcf94d7cc223313d6acf",
+        "license": "odc-by"
+      },
+      "tombench": {
+        "repo": "https://github.com/zhchen18/ToMBench",
+        "revision": "4f491f0784ed31ef93a8837615fbc48f885cf78d",
+        "license": "mit"
+      }
+    }
+  },
+  "source_sha256": {
+    "results/summaries/manuscript_evidence.json": "3ea92f5781463836a4cba82d68640b45ab981bc78df29727838c69229135a272",
+    "results/summaries/formal_search_table.csv": "2e49eb258888628639745fd15abb4462809ad38a51fbebdf7b83131c3a216495",
+    "results/summaries/formal_one_shot_table.csv": "8bcad29e90fcb4fc768b4562e19e80ecb17dc09a94e4b0aa748a1d9a38ccdae2",
+    "results/summaries/formal_budget_curve.csv": "e7ab54316cdeaab173c8d05ac8c7cbc86f93a4336f476f5913e709358cca6cf1",
+    "results/summaries/formal_feedback_audit.csv": "9eca8faa609ebc62edea553f23cccb357879c61f37e11c8054c1291a4a4ca462",
+    "results/summaries/formal_cross_target.csv": "8c3278da113056e6c5b09a3a9df8ff4f7a231afa30d6048ed74d8f42eaffe9e8",
+    "results/summaries/arr/additional_controls.json": "d592cee5938c569823e8b45aae665ba0270a373a5ffddce9ac08ec1a59f02d58",
+    "results/summaries/arr/human_validation_author_report.json": "104f317a5c1a50e359a534e034878b3de6655aea4d6bbf7e28bc74d7e45a01ee",
+    "configs/formal_method.lock.json": "06f7bd1369b84fe68b74a03e2a728155c0f05d884ab5da7bd47c6b12c230592b",
+    "configs/models.lock.json": "c6882348fb7eb16798e2f950d1f40278a94c7fd28dd9316e0657c25667779c7a",
+    "data/manifests/sources.lock.json": "43608f430d90d9bf5dab8288bd0c34a5cc85cb8e3286970851df26134bae4ed1",
+    "paper/arxiv_v2/figure_teaser.pdf": "326243554ba5ed7d78c992199f9a44557cb22428ffd64c0b450ccb2e1fb68751"
+  }
+}

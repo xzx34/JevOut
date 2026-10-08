@@ -187,6 +187,44 @@ class OptimizationResult(StrictModel):
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
+class IndependentRootConfig(StrictModel):
+    strategy: Literal["independent_root"] = "independent_root"
+    target_budget: int = Field(default=64, gt=0)
+    proposal_budget: int = Field(default=128, gt=0)
+    batch_size: int = Field(default=16, gt=0)
+    proposal_retries: int = Field(default=1, ge=0)
+    success_threshold: float = Field(default=0.7, gt=0, le=1)
+    seed: int = 20260921
+
+
+class IndependentRootResult(OptimizationResult):
+    config: IndependentRootConfig
+    slots_completed: int
+    stop_reason: Literal["target_call_cap", "proposal_attempt_cap", "batch_end_threshold"]
+
+
+class RepeatabilityResult(StrictModel):
+    item_id: str
+    unit_id: str
+    target_id: str
+    target_option: str
+    target_branch: str
+    source_attempt_id: str
+    additions: list[ContextAddition]
+    original_source_hash: str
+    augmented_source_hash: str
+    repetitions: int
+    minimum_hits: int
+    clean_gold_hits: int
+    target_hits: int
+    flip_confirmed: bool
+    clean_and_flip_confirmed: bool
+    clean_results: list[DecisionResult]
+    augmented_results: list[DecisionResult]
+    model_revision: str
+    local_cache_bypassed: bool = True
+
+
 class TransferResult(StrictModel):
     item_id: str
     unit_id: str

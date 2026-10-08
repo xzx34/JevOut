@@ -2,8 +2,10 @@
 
 from .checker import ContextChecker, OpenAIContextChecker
 from .evaluate import EvaluationRecord, evaluate
+from .independent import sample_independent_context
 from .optimize import IneligibleDecisionError, optimize_context
 from .proposer import ContextProposer, OpenAIContextProposer
+from .repeatability import retest_context
 from .schema import (
     CheckResult,
     ChoiceOption,
@@ -11,11 +13,14 @@ from .schema import (
     DecisionItem,
     DecisionResult,
     EvaluationUnit,
+    IndependentRootConfig,
+    IndependentRootResult,
     InsertionBoundary,
     OptimizationAttempt,
     OptimizationConfig,
     OptimizationResult,
     Proposal,
+    RepeatabilityResult,
     TransferResult,
 )
 from .targets import CachedTarget, CallableTarget, DecisionTarget, HttpDecisionTarget, JevTarget
@@ -35,6 +40,8 @@ __all__ = [
     "EvaluationRecord",
     "EvaluationUnit",
     "HttpDecisionTarget",
+    "IndependentRootConfig",
+    "IndependentRootResult",
     "IneligibleDecisionError",
     "InsertionBoundary",
     "JevTarget",
@@ -44,9 +51,12 @@ __all__ = [
     "OptimizationConfig",
     "OptimizationResult",
     "Proposal",
+    "RepeatabilityResult",
     "TransferResult",
     "evaluate",
     "optimize_context",
+    "retest_context",
+    "sample_independent_context",
     "select_representative_attempt",
     "targeted_transfer_rate",
     "transfer_context",

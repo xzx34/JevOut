@@ -19,4 +19,6 @@ jobs:
       - run: uv sync --frozen --extra dev
       - run: uv run pytest
       - run: uv run ruff check .
+      - run: uv run context-opt demo --output-dir outputs/demo
+      - run: uv run context-opt validate --input examples/toy_choices.jsonl
       - run: uv build --wheel

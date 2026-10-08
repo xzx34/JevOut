@@ -8,4 +8,5 @@ __pycache__/
 dist/
 *.egg-info/
 cache/
+.cache/
 outputs/

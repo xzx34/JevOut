@@ -1,79 +1,121 @@
 # JevOut: Natural Context Can Flip Decision Models
 
+[Paper](https://arxiv.org/abs/2609.30243) ·
 [Project page](https://xzx34.github.io/jevout/) ·
-[Paper](https://arxiv.org/abs/2609.30243)
+[Quickstart](docs/quickstart.md) ·
+[Experiment settings](docs/paper_protocol.md)
 
-This repository contains the reusable implementation accompanying the
-[JevOut paper](https://arxiv.org/abs/2609.30243).
-It evaluates whether short, answer-preserving context additions can redirect an
-initially correct bounded decision to a target option fixed in advance.
+**Short, natural-looking context can redirect a correct decision toward a
+chosen wrong answer, even when the underlying task remains unchanged.**
+We study this behavior in four decision systems across seven datasets spanning
+knowledge, reasoning, and tool routing. Context additions supply background or
+procedural details while preserving the original text, question, choices, and
+correct answer.
 
-The implementation calls this procedure **probability-guided context
-optimization**. A successful outcome is a **targeted flip**, and Targeted Flip
-Rate (TFR) is measured over decisions the target model initially answers
-correctly under a stated target-evaluation budget.
+![A natural context addition redirects a climate-ethics decision; the original question and choices remain fixed.](assets/natural_context_redirection.png)
 
-The package provides a strict input contract, deterministic context rendering,
-decision-target adapters, clean evaluation, probability-guided context
-optimization, the formal one-shot controls, and cross-model transfer evaluation.
+*Figure 1 from the paper. The example asks for a definition: the added detail
+raises a related intergenerational issue without changing that definition.
+Jev moves from the correct answer at probability 0.97 to the fixed wrong target
+at probability 0.54.*
 
-This code release does not include the manuscript source, experimental data,
-paper figures, result artifacts, model weights, or proposer fine-tuning pipeline.
+## Main findings
 
-## Install
+Within **64 accepted target evaluations per decision**, probability-guided
+context optimization uncovers targeted flips in a majority of each system's
+initially correct decisions:
+
+| Decision system | Initially correct decisions | Neutral one-shot | Target-aware one-shot | Context optimization |
+| :--- | ---: | ---: | ---: | ---: |
+| Jev | 508 | 2.2% | 16.9% | **61.4%** |
+| OpenSourceJev | 328 | 6.4% | 16.2% | **72.6%** |
+| Von | 328 | 7.6% | 21.6% | **73.2%** |
+| Plain Qwen | 285 | 8.4% | 18.6% | **64.9%** |
+
+TFR counts a decision only when an accepted context makes the model select the
+wrong option fixed before construction. Each row uses that system's initially
+correct population. One-shot controls generate one sentence; optimization
+uses the stated call budget.
+
+The V2 evaluation also includes a budget-matched independent-generation
+control on Jev (48.0% TFR), blinded human validation (229/250 sampled successful
+contexts judged valid), and repeated evaluations (97/100 sampled primary Jev
+successes reproduce at least 8/10 times with a context selected before retesting).
+See [results and validation](docs/results.md) for protocols and
+[machine-readable aggregates](assets/results_summary.json) for counts.
+
+## Try it offline
+
+Requires Python 3.12 and [uv](https://docs.astral.sh/uv/).
 
 ```bash
+git clone https://github.com/xzx34/JevOut.git
+cd JevOut
 uv sync --frozen
+uv run context-opt demo --output-dir outputs/demo
 ```
 
-See the [quickstart](docs/quickstart.md), [input format](docs/input_format.md),
-and [target adapter guide](docs/target_adapters.md) for a complete run.
+The demo runs clean evaluation, context optimization, independent generation,
+and repeatability checks without credentials or network requests. It writes
+JSONL records and a summary using a deterministic synthetic target; the demo
+probabilities are illustrative rather than model measurements.
 
-Validate JSONL without calling a model:
+## Use a decision model
+
+Provide decision items in the [JSONL input format](docs/input_format.md), a
+target adapter, and an OpenAI-compatible proposer/checker endpoint:
 
 ```bash
 uv run context-opt validate --input examples/toy_choices.jsonl
-```
 
-Jev credentials are read from `TYPESAFE_API_KEY`. Never commit a populated
-`.env` file.
-
-## Core API
-
-```python
-from context_optimization import OptimizationConfig, optimize_context
-
-result = optimize_context(
-    item,
-    target,
-    proposer,
-    checker,
-    config=OptimizationConfig(particles=16, rounds=4),
-)
-```
-
-The target option is fixed from the clean distribution before optimization.
-Items that the target does not initially answer correctly are ineligible and
-remain outside the TFR denominator.
-
-With an OpenAI-compatible proposer service, the corresponding CLI shape is:
-
-```bash
 uv run context-opt optimize \
-  --input decisions.jsonl \
-  --output optimized.jsonl \
+  --input decisions.jsonl --output outputs/optimized.jsonl \
   --target jev \
   --proposer-url http://127.0.0.1:8000/v1 \
   --proposer-model your-model
 ```
 
-The default adaptive configuration permits at most 64 accepted target
-evaluations per eligible decision (16 candidates over 4 rounds). Rejected or
-duplicate proposals do not consume that target-evaluation budget.
+Jev reads `TYPESAFE_API_KEY` from the environment. The
+[quickstart](docs/quickstart.md) includes a smaller-budget run, one-shot
+controls, the independent-root baseline, and fixed-context retesting.
+[Target adapters](docs/target_adapters.md) cover Jev, generic HTTP services,
+and in-process Python models.
 
-Cross-model evaluation is available through `transfer_context` and
-`targeted_transfer_rate`. It keeps the source-selected decision unit and target
-option fixed, then evaluates the frozen context on a destination target.
+The Python API exposes `optimize_context`, `sample_independent_context`,
+`retest_context`, clean evaluation, and frozen-context transfer. The package
+records proposals, acceptance decisions, target probabilities, margins, and
+call counts. Rejected or duplicate proposals consume proposal attempts but
+not accepted target evaluations.
+
+## Paper and software versions
+
+Version **0.2.0** accompanies the revised arXiv manuscript and adds the
+independent-generation control, repeatability tools, offline demo, and V2
+documentation. See the [changelog](CHANGELOG.md) and
+[output format](docs/output_format.md).
+
+This repository releases the reusable evaluation code, prompts, a paper figure,
+and aggregate results. Experimental source data, raw trajectories, individual
+human ratings, proposer fine-tuning code, and model weights are not bundled.
+The [experiment settings](docs/paper_protocol.md) describe the paper's models,
+task adaptations, budgets, and training-based supporting analysis.
+
+## Citation
+
+Zixiang Xu, Zirui Song, Chiyu Zhang, Xiuying Chen, Xi Liu, Xiyang Hu, and Yue Zhao.
+Corresponding author: Yue Zhao ([yue.z@usc.edu](mailto:yue.z@usc.edu)).
+
+```bibtex
+@article{xu2026jevout,
+  title   = {JevOut: Natural Context Can Flip Decision Models},
+  author  = {Xu, Zixiang and Song, Zirui and Zhang, Chiyu and Chen, Xiuying and Liu, Xi and Hu, Xiyang and Zhao, Yue},
+  journal = {arXiv preprint arXiv:2609.30243},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2609.30243}
+}
+```
+
+Licensed under Apache-2.0. See [SECURITY.md](SECURITY.md) for private security reports.
 
 ## Development
 
@@ -83,17 +125,3 @@ uv run pytest
 uv run ruff check .
 uv build --wheel
 ```
-
-## Citation
-
-```bibtex
-@article{xu2026jevout,
-  title   = {JevOut: Natural Context Can Flip Decision Models},
-  author  = {Xu, Zixiang},
-  journal = {arXiv preprint arXiv:2609.30243},
-  year    = {2026}
-}
-```
-
-Licensed under Apache-2.0. Please report security issues using GitHub's private
-security-advisory workflow; see [SECURITY.md](SECURITY.md).

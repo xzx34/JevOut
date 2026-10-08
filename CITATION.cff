@@ -5,8 +5,8 @@ title: "JevOut: Natural Context Can Flip Decision Models"
 authors:
   - family-names: Xu
     given-names: Zixiang
-version: 0.1.0
-date-released: 2026-09-24
+version: 0.2.0
+date-released: 2026-10-08
 url: "https://xzx34.github.io/jevout/"
 repository-code: "https://github.com/xzx34/JevOut"
 license: Apache-2.0
@@ -16,6 +16,26 @@ preferred-citation:
   authors:
     - family-names: Xu
       given-names: Zixiang
+      affiliation: University of Southern California
+    - family-names: Song
+      given-names: Zirui
+      affiliation: Mohamed bin Zayed University of Artificial Intelligence
+    - family-names: Zhang
+      given-names: Chiyu
+      affiliation: Independent Researcher
+    - family-names: Chen
+      given-names: Xiuying
+      affiliation: Mohamed bin Zayed University of Artificial Intelligence
+    - family-names: Liu
+      given-names: Xi
+      affiliation: Independent Researcher
+    - family-names: Hu
+      given-names: Xiyang
+      affiliation: Arizona State University
+    - family-names: Zhao
+      given-names: Yue
+      affiliation: University of Southern California
+      email: yue.z@usc.edu
   year: 2026
   month: 9
   url: "https://arxiv.org/abs/2609.30243"
