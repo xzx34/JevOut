@@ -1,10 +1,14 @@
 <h1 align="center">JevOut: Natural Context Can Flip Decision Models</h1>
 
-📄 [Paper](https://arxiv.org/abs/2609.30243) ·
-🌐 [Project page](https://xzx34.github.io/jevout/) ·
-🚀 [Quickstart](docs/quickstart.md)
+<p align="center">
+  <a href="https://arxiv.org/abs/2609.30243">Paper</a> &nbsp;·&nbsp;
+  <a href="https://xzx34.github.io/jevout/">Project Page</a> &nbsp;·&nbsp;
+  <a href="docs/quickstart.md">Quickstart</a>
+</p>
 
-🎤 **Workshop:** [Agenthon @ NeurIPS 2026](https://www.agenthon.net/#call-for-papers) · **Poster**
+<p align="center">
+  <a href="https://www.agenthon.net/#call-for-papers">Agenthon @ NeurIPS 2026</a> · Poster
+</p>
 
 ## News
 
