@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Add the Agenthon @ NeurIPS 2026 poster acceptance and a dated News section.
+- Simplify the README and documentation navigation; remove embedded figures.
+- Move aggregate results to `docs/results_summary.json` and remove the standalone
+  figure assets. Figure files remain available in the v0.2.0 Git tag and source release.
+- Keep the Python package, commands, and experiment results unchanged.
+
 ## 0.2.0 - 2026-10-08
 
 This release accompanies the revised JevOut arXiv manuscript.

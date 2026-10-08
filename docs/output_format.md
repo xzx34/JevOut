@@ -61,7 +61,7 @@ are not recorded as unsuccessful predictions.
 
 ## Aggregate paper results
 
-[`assets/results_summary.json`](../assets/results_summary.json) is a separate
+[`docs/results_summary.json`](results_summary.json) is a separate
 export of paper-level counts and settings. It contains primary and one-shot
 results, budget curves, the Jev independent-generation comparison, separate
 repeatability samples, reported human-validation aggregates, and the matched

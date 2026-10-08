@@ -5,7 +5,7 @@ decision system select a wrong option fixed in advance while the original
 task and gold answer remain unchanged. All discovery rates below retain each
 system's initially correct population. Settings are in
 [paper_protocol.md](paper_protocol.md); counts are also available in
-[`results_summary.json`](../assets/results_summary.json).
+[`results_summary.json`](results_summary.json).
 
 ## Primary results
 

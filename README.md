@@ -1,50 +1,45 @@
-# JevOut: Natural Context Can Flip Decision Models
+<h1 align="center">JevOut: Natural Context Can Flip Decision Models</h1>
 
-[Paper](https://arxiv.org/abs/2609.30243) ·
-[Project page](https://xzx34.github.io/jevout/) ·
-[Quickstart](docs/quickstart.md) ·
-[Experiment settings](docs/paper_protocol.md)
+📄 [Paper](https://arxiv.org/abs/2609.30243) ·
+🌐 [Project page](https://xzx34.github.io/jevout/) ·
+🚀 [Quickstart](docs/quickstart.md)
 
-**Short, natural-looking context can redirect a correct decision toward a
-chosen wrong answer, even when the underlying task remains unchanged.**
-We study this behavior in four decision systems across seven datasets spanning
-knowledge, reasoning, and tool routing. Context additions supply background or
-procedural details while preserving the original text, question, choices, and
-correct answer.
+🎤 **Workshop:** [Agenthon @ NeurIPS 2026](https://www.agenthon.net/#call-for-papers) · **Poster**
 
-![A natural context addition redirects a climate-ethics decision; the original question and choices remain fixed.](assets/natural_context_redirection.png)
+## News
 
-*Figure 1 from the paper. The example asks for a definition: the added detail
-raises a related intergenerational issue without changing that definition.
-Jev moves from the correct answer at probability 0.97 to the fixed wrong target
-at probability 0.54.*
+- **[10/08/2026]** 🎉 JevOut has been accepted to **Agenthon @ NeurIPS 2026** as a **poster**! See you in Atlanta!
+- **[10/08/2026]** Code [v0.2.0](https://github.com/xzx34/JevOut/releases/tag/v0.2.0) is available, with an offline demo, independent-generation baseline, repeatability tools, and updated experiment documentation.
+- **[09/24/2026]** Initial code release.
 
-## Main findings
+## Introduction
 
-Within **64 accepted target evaluations per decision**, probability-guided
-context optimization uncovers targeted flips in a majority of each system's
-initially correct decisions:
+Decision models turn language into choices for routers, evaluators, and agents.
+But can they tell useful context from a distraction? We find that short,
+natural-looking additions can redirect a correct decision toward a chosen
+wrong answer, without changing the original task, choices, or correct answer.
+The additions read as ordinary background or procedural details rather than
+instructions to change the decision.
 
-| Decision system | Initially correct decisions | Neutral one-shot | Target-aware one-shot | Context optimization |
-| :--- | ---: | ---: | ---: | ---: |
-| Jev | 508 | 2.2% | 16.9% | **61.4%** |
-| OpenSourceJev | 328 | 6.4% | 16.2% | **72.6%** |
-| Von | 328 | 7.6% | 21.6% | **73.2%** |
-| Plain Qwen | 285 | 8.4% | 18.6% | **64.9%** |
+JevOut studies this phenomenon across four decision systems and seven datasets.
+We use probability-guided context optimization to construct answer-preserving
+additions and measure **Targeted Flip Rate (TFR)**: how often an initially
+correct decision moves to the wrong option fixed in advance. With a budget of
+up to 64 accepted target evaluations per decision:
 
-TFR counts a decision only when an accepted context makes the model select the
-wrong option fixed before construction. Each row uses that system's initially
-correct population. One-shot controls generate one sentence; optimization
-uses the stated call budget.
+| Decision system | Initially correct decisions | TFR |
+| :--- | ---: | ---: |
+| Jev | 508 | **61.4%** |
+| OpenSourceJev | 328 | **72.6%** |
+| Von | 328 | **73.2%** |
+| Plain Qwen | 285 | **64.9%** |
 
-The V2 evaluation also includes a budget-matched independent-generation
-control on Jev (48.0% TFR), blinded human validation (229/250 sampled successful
-contexts judged valid), and repeated evaluations (97/100 sampled primary Jev
-successes reproduce at least 8/10 times with a context selected before retesting).
-See [results and validation](docs/results.md) for protocols and
-[machine-readable aggregates](assets/results_summary.json) for counts.
+The study also examines cross-model transfer, independent human validation,
+repeatability, and learned context generation. See the
+[results](docs/results.md) and [experiment settings](docs/paper_protocol.md)
+for the full comparisons.
 
-## Try it offline
+## Quickstart
 
 Requires Python 3.12 and [uv](https://docs.astral.sh/uv/).
 
@@ -55,55 +50,32 @@ uv sync --frozen
 uv run context-opt demo --output-dir outputs/demo
 ```
 
-The demo runs clean evaluation, context optimization, independent generation,
-and repeatability checks without credentials or network requests. It writes
-JSONL records and a summary using a deterministic synthetic target; the demo
-probabilities are illustrative rather than model measurements.
+The demo uses a deterministic synthetic model and needs no API keys or model
+service. It runs context optimization, independent generation, and repeatability
+checks, then writes the results to `outputs/demo/`.
 
-## Use a decision model
+To use Jev or your own decision model, follow the [quickstart guide](docs/quickstart.md).
+The package supports Jev, HTTP endpoints, and Python callbacks through a common
+[target interface](docs/target_adapters.md).
 
-Provide decision items in the [JSONL input format](docs/input_format.md), a
-target adapter, and an OpenAI-compatible proposer/checker endpoint:
+## Repository layout
 
-```bash
-uv run context-opt validate --input examples/toy_choices.jsonl
-
-uv run context-opt optimize \
-  --input decisions.jsonl --output outputs/optimized.jsonl \
-  --target jev \
-  --proposer-url http://127.0.0.1:8000/v1 \
-  --proposer-model your-model
+```text
+context_optimization/   evaluation, context optimization, controls, and prompts
+docs/                   usage guides, experiment settings, and result summaries
+examples/               sample decision items and a Python target adapter
+tests/                  offline tests
 ```
 
-Jev reads `TYPESAFE_API_KEY` from the environment. The
-[quickstart](docs/quickstart.md) includes a smaller-budget run, one-shot
-controls, the independent-root baseline, and fixed-context retesting.
-[Target adapters](docs/target_adapters.md) cover Jev, generic HTTP services,
-and in-process Python models.
+**Usage:** [Quickstart](docs/quickstart.md) · [Input format](docs/input_format.md) ·
+[Output format](docs/output_format.md) · [Target adapters](docs/target_adapters.md)
 
-The Python API exposes `optimize_context`, `sample_independent_context`,
-`retest_context`, clean evaluation, and frozen-context transfer. The package
-records proposals, acceptance decisions, target probabilities, margins, and
-call counts. Rejected or duplicate proposals consume proposal attempts but
-not accepted target evaluations.
-
-## Paper and software versions
-
-Version **0.2.0** accompanies the revised arXiv manuscript and adds the
-independent-generation control, repeatability tools, offline demo, and V2
-documentation. See the [changelog](CHANGELOG.md) and
-[output format](docs/output_format.md).
-
-This repository releases the reusable evaluation code, prompts, a paper figure,
-and aggregate results. Experimental source data, raw trajectories, individual
-human ratings, proposer fine-tuning code, and model weights are not bundled.
-The [experiment settings](docs/paper_protocol.md) describe the paper's models,
-task adaptations, budgets, and training-based supporting analysis.
+**Experiments:** [Settings](docs/paper_protocol.md) · [Results](docs/results.md) ·
+[Aggregate JSON](docs/results_summary.json)
 
 ## Citation
 
-Zixiang Xu, Zirui Song, Chiyu Zhang, Xiuying Chen, Xi Liu, Xiyang Hu, and Yue Zhao.
-Corresponding author: Yue Zhao ([yue.z@usc.edu](mailto:yue.z@usc.edu)).
+If you use this work, please cite:
 
 ```bibtex
 @article{xu2026jevout,
@@ -115,13 +87,5 @@ Corresponding author: Yue Zhao ([yue.z@usc.edu](mailto:yue.z@usc.edu)).
 }
 ```
 
-Licensed under Apache-2.0. See [SECURITY.md](SECURITY.md) for private security reports.
-
-## Development
-
-```bash
-uv sync --frozen --extra dev
-uv run pytest
-uv run ruff check .
-uv build --wheel
-```
+Corresponding author: Yue Zhao ([yue.z@usc.edu](mailto:yue.z@usc.edu)).
+Code is licensed under [Apache-2.0](LICENSE).

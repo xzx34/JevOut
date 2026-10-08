@@ -151,7 +151,15 @@ population. Binomial intervals in the paper use 95% Wilson intervals; feedback
 differences use paired bootstrap resamples grouped by source item and stratified
 by dataset.
 
-The [aggregate JSON](../assets/results_summary.json) contains counts, settings,
+The [aggregate JSON](results_summary.json) contains counts, settings,
 budget curves, and reported validation outcomes, with source-file SHA-256 hashes.
 It supports checking the reported arithmetic; it is not a bundle of raw model
 requests or sampled dataset records.
+
+## Release scope
+
+The public repository includes reusable evaluation code, prompts, synthetic
+examples, and the aggregate results above. Experimental source data, raw
+trajectories, individual human ratings, proposer fine-tuning code, and model
+weights are not bundled. External datasets and models retain their own licenses,
+recorded alongside their source revisions in the aggregate JSON.

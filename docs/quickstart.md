@@ -133,3 +133,15 @@ the specified discovery budget. A wrong choice other than the fixed target
 does not count. A stopping probability of 0.7 is separate from success: any
 selection of the fixed target counts as a flip. Repeated evaluations assess
 an already discovered context and do not replace discovery TFR.
+
+## Development
+
+```bash
+uv sync --frozen --extra dev
+uv run pytest
+uv run ruff check .
+uv build --wheel
+```
+
+See the [changelog](../CHANGELOG.md) for software updates and
+[SECURITY.md](../SECURITY.md) for private security reports.
