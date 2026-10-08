@@ -1,21 +1,16 @@
-<h1 align="center">JevOut</h1>
+<h2 align="center">JevOut: Natural Context Can Flip Decision Models</h2>
 
 <p align="center">
-  <strong>Natural Context Can Flip Decision Models</strong><br>
-  <sub><a href="https://www.agenthon.net/#call-for-papers">Agenthon @ NeurIPS 2026</a> · Poster</sub>
-</p>
-
-<p align="center">
-  <a href="https://arxiv.org/abs/2609.30243"><kbd>&nbsp; Paper &nbsp;</kbd></a>
-  &nbsp;&nbsp;
-  <a href="https://xzx34.github.io/jevout/"><kbd>&nbsp; Project Page &nbsp;</kbd></a>
-  &nbsp;&nbsp;
-  <a href="docs/quickstart.md"><kbd>&nbsp; Quickstart &nbsp;</kbd></a>
+  <a href="https://arxiv.org/abs/2609.30243"><img src="https://img.shields.io/badge/arXiv-2609.30243-B31B1B?style=flat-square" alt="Paper on arXiv" height="24"></a>
+  &nbsp;
+  <a href="https://xzx34.github.io/jevout/"><img src="https://img.shields.io/badge/Project-Page-2563EB?style=flat-square" alt="Project page" height="24"></a>
+  &nbsp;
+  <a href="docs/quickstart.md"><img src="https://img.shields.io/badge/Docs-Quickstart-475569?style=flat-square" alt="Quickstart" height="24"></a>
 </p>
 
 ## News
 
-- **[10/08/2026]** 🎉 JevOut has been accepted to **Agenthon @ NeurIPS 2026** as a **poster**! See you in Atlanta!
+- **[10/08/2026]** 🎉 JevOut has been accepted to **[Agenthon @ NeurIPS 2026](https://www.agenthon.net/#call-for-papers)** as a **poster**! See you in Atlanta!
 - **[10/08/2026]** Code [v0.2.0](https://github.com/xzx34/JevOut/releases/tag/v0.2.0) is available, with an offline demo, independent-generation baseline, repeatability tools, and updated experiment documentation.
 - **[09/24/2026]** Initial code release.
 
